@@ -2,11 +2,16 @@ const socket = io();
 
 //get the form element from chat.html
 const chatForm = document.getElementById('chat-form');
+const chatMessages = document.querySelector('.chat-messages');
 
 //client socket listens for messages from the server
 socket.on('message' , data => {
     console.log(data);
     output(data);
+
+    //Scroll to the bottom
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
 })
 
 //create an event listener for chatForm, i.e., whenever a user sends data through the chat
@@ -22,15 +27,22 @@ chatForm.addEventListener('submit', (e) => {
     //sends the message input by the user to the server
     socket.emit('chatMessage' , userMsg);
 
+    //Once the message is sent to the server, the user input is cleared
+    e.target.elements.msg.value='';
+
+    //focus on the input bar
+    e.target.elements.msg.focus();
+
+
 
 })
-
+ 
 //The client outputs the message received from server
 function output(data){
     const divMessage = document.createElement('div');
     divMessage.classList.add('message');
-    divMessage.innerHTML = `<p class ="meta">Random User<span> Random Time</span></p>
-                            <p class="text">${data}</p>`;
+    divMessage.innerHTML = `<p class ="meta">${data.username}<span> ${data.time}</span></p>
+                            <p class="text">${data.text}</p>`;
     document.querySelector('.chat-messages').appendChild(divMessage); 
 }
 

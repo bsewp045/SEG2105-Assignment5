@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Simple Chat App</title>
+</head>
+<body>
+    <!--class join-container contains all the elements required to join the chat room -->
+    <div class = "join-container">
+        <!--class join-header contains the title of the app-->
+        <header class = "join-header">
+            <p>Simple Chat</p>
+        </header>
+        <!--The join-main class contains the form-->
+        <main class = "join-main">
+            <!--Submitting this form leads to chat.html-->
+            <form action = "chat.html" autocomplete="off">
+                <!--Form data includes the username and the chat room-->
+                <div class = "form-data">
+                    <label for = "username">Username</label>
+                    <input
+                    type = "text"
+                    name = "username"
+                    id = "username" 
+                    placeholder = "Enter username"
+                    required
+                    />
+                </div>
+                <div class = "form-data">
+                    <label for = "room">Room</label>
+                    <select name = "room" id = "room">
+                        <option value = "Computer Engineering">Computer Engineering</option>
+                        <option value = "Computer Science">Computer Science</option>
+                        <option value = "Civil Engineering">Civil Engineering</option>
+                        <option value = "Mechanical Engineering">Mechanical Engineering</option>
+                        <option value = "Electrical Engineering">Electrical Engineering</option>
+                    </select>
+                </div>
+                <button type ="submit" class = "button" >Enter Chat Room</button>
+            </form>
+        </main>
+    </div>
+    
+</body>
+</html>

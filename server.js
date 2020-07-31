@@ -4,6 +4,7 @@ const http = require('http');
 const app = express();
 const socketio = require('socket.io');
 const formatMessage = require('./format/formatUserInput');
+const {userJoin, getUser, userLeft, getRoom}= require('./format/roomFunctionality');
 // Create a server
 const server = http.createServer(app);
 //Create a socket through which the server listens
@@ -14,24 +15,40 @@ app.use(express.static(path.join(__dirname, 'other')));
 
 //Server listens for user connections
 io.on('connection', (socket) => {
-    
-    //whenever a user connects, the server sends out a welcome message
+
+    socket.on('joinRoom' , ({username,room}) => {
+
+        const user = userJoin(socket.id, username, room);
+        socket.join(user.room);
+
+
+        //whenever a user connects, the server sends out a welcome message
     socket.emit("message" , formatMessage('SimpleChat' , "Welcome to Simple Chat"));
 
 
     //Whenever a user connects, all other users get a notification except the user that is connecting
-    socket.broadcast.emit('message' , formatMessage('SimpleChat','A new user has joined the chatroom'));
+    socket.broadcast.to(user.room).emit('message' , formatMessage('SimpleChat',`${user.username} has joined the chatroom`));
+    })
+    
+    
 
     //Whenever a user disconnects, all other users get a notification
     socket.on('disconnect' , () => {
+        const user = userLeft(socket.id);
         //sends disconnect message to all users
-        io.emit('message' , formatMessage('SimpleChat','A user has left the chatroom'))
+        if(user){
+            io.to(user.room).emit('message' , formatMessage('SimpleChat',`${user.username} has left the chatroom`));
+        }
+        
+        
     })
 
     //server listens for chat messages from the user
     socket.on('chatMessage' , userMsg => {
+        const user = getUser(socket.id);
+
         //when server receives a message from a user, it broadcasts it to all other users
-        io.emit('message', formatMessage( 'Random User', userMsg));    
+        io.to(user.room).emit('message', formatMessage( `${user.username}`, userMsg));    
 
     })
 

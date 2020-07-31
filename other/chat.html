@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Chat Room</title>
+</head>
+<body>
+    <!--class chat-container contains all the elements of the chat room-->
+    <div class = "chat-container">
+        <main class = "chat-main">
+            <!-- class side-bar contains information about the chatromm such as the room name and # users-->
+            <div class="chat-sidebar">
+                <h3> Room Name:</h3>
+                <h2 id="room-name">Computer Engineering</h2>
+                <h3>Users</h3>
+                <ul id="users">
+                  <li>User1</li>
+                  <li>User2</li>
+                  <li>User3</li>
+                  <li>User4</li>
+                  <li>User5</li>
+                </ul>
+            </div>
+
+
+            <!--class chat-messages contains the chat messages input by the user-->
+            <div class = "chat-messages">            
+            </div>
+        </main>
+
+        <div class = "chat-send-message">
+
+            <!--form to send text messages on the chat-->
+            <form id="chat-form">
+              
+                <input
+                id="msg"
+                type="text"
+                placeholder="Enter Message"
+                required
+                autocomplete="off"
+              />
+              
+                <button class = "button1">Send</button>
+            
+            </form>
+              
+        </div>
+
+        <!--class chat-exit to return to login page-->
+        <div class = "chat-exit">
+            <a href = "index.html">Exit Room</a>
+        </div>      
+
+    </div>    
+    <script src= "https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/client.js"></script>   
+    
+  
+</body>
+</html>

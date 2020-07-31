@@ -1,0 +1,100 @@
+.join-container{
+    background-color:lavenderblush;
+    border-style: solid;
+    margin : auto;
+    width : 250px;
+    height: 350px;
+
+}
+
+.join-header{
+    margin: auto;
+    font-size: 40px;
+}
+
+.join-header p{
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.join-main label{
+    display : block;
+    padding-top : 10px;
+    padding-bottom:5px;
+}
+
+.join-main input[type='text'] {
+    background-color:gainsboro;
+    font-size: 16px;
+    padding-left: 10px;
+	height: 40px;-left
+	width: 50%;
+}
+
+.join-main select{
+    background-color:gainsboro;
+    font-size: 16px;
+    padding-left: 10px;
+	height: 40px;-left
+    width: 50%;
+    padding-bottom:5px;
+}
+
+.join-main .button{
+    background-color:gainsboro;
+    font-size: 16px;
+    margin-top: 20px;
+    width: 80%;
+
+}
+
+
+.chat-container{
+    background-color:lavenderblush;
+    border-style: solid;
+    margin: auto;
+    max-width : 700px;
+    max-height: 700px;    
+    overflow:hidden;
+
+
+}
+
+.chat-main {
+    display: grid;
+}
+
+.chat-messages{
+    float:right;
+    max-height :400px;
+    max-width :600px;
+    overflow-y: scroll;
+    border-style: solid;
+    border-color: ghostwhite;
+}
+
+
+
+
+.chat-messages .messages{
+    border-style: solid;
+    border-color: ghostwhite;
+    background-color: gainsboro;
+}
+
+.chat-main .chat-sidebar{
+    float:left;
+    background-color: gainsboro;
+    max-width : 600px;
+    max-height: 200px;
+    float:right;
+    overflow-y: scroll;
+}
+
+
+
+.chat-send-message{
+    position: relative;
+    margin-top: 5px;
+}
+

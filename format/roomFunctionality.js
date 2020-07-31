@@ -1,3 +1,6 @@
+//Author : Brad Traversy
+//https://github.com/bradtraversy/chatcord.git
+
 // use an array to keep track of all the users in a room
 const users = [];
 

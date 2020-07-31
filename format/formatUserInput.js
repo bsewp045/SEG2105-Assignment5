@@ -1,3 +1,5 @@
+//Author : Brad Traversy
+//https://github.com/bradtraversy/chatcord.git
 const moment = require('moment');
 
 function formatMessage(username, text){

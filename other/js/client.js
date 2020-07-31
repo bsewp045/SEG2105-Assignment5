@@ -1,5 +1,4 @@
-
-
+// Inspired from https://github.com/bradtraversy/chatcord.git
 //get the form element from chat.html
 const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-messages');

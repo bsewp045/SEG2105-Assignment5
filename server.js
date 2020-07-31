@@ -28,6 +28,12 @@ io.on('connection', (socket) => {
 
     //Whenever a user connects, all other users get a notification except the user that is connecting
     socket.broadcast.to(user.room).emit('message' , formatMessage('SimpleChat',`${user.username} has joined the chatroom`));
+
+    // update the users' names on the website
+    io.to(user.room).emit('roomUser' , {
+        room : user.room,
+        users: getRoom(user.room)
+    });
     })
     
     
@@ -38,7 +44,16 @@ io.on('connection', (socket) => {
         //sends disconnect message to all users
         if(user){
             io.to(user.room).emit('message' , formatMessage('SimpleChat',`${user.username} has left the chatroom`));
+
+            io.to(user.room).emit('roomUser' , {
+                room : user.room,
+                users: getRoom(user.room)
+            });
         }
+
+
+        //update the users' names on the website
+        
         
         
     })
